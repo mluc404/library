@@ -45,3 +45,37 @@ function displayBook(arr) {
   });
 }
 displayBook(myLibrary);
+
+// Get input from New Book
+let form = document.querySelector("form");
+let inputTitle = form.querySelector("#title");
+let inputAuthor = form.querySelector("#author");
+let inputPages = form.querySelector("#pages");
+let checkRead = document.querySelector("#checkRead");
+let submitBtn = form.querySelector("#submit");
+// Submit and add new book
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  addBookToLibrary(
+    inputTitle.value,
+    inputAuthor.value,
+    inputPages.value,
+    checkRead.checked
+  );
+  let newBookArr = myLibrary.splice(-1);
+
+  displayBook(newBookArr);
+});
+
+// Toggle button to show modal
+let dialog = document.querySelector(".bookDialog");
+let openButton = document.querySelector(".openDialog");
+let closeButton = document.querySelector(".closeDialog");
+
+openButton.addEventListener("click", (e) => {
+  dialog.showModal();
+});
+closeButton.addEventListener("click", (e) => {
+  dialog.close();
+});

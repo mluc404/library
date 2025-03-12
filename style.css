@@ -42,13 +42,12 @@ form {
   display: grid;
 }
 
-.addBook {
-  margin: 30px;
+input {
+  height: 1.5rem;
+  border-radius: 5px;
+  border: black solid 1px;
 }
 
-button {
-  width: 200px;
-  height: 30px;
-  font-size: 1rem;
-  font-weight: 600;
+.addBook {
+  margin: 30px;
 }
