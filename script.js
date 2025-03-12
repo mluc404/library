@@ -16,7 +16,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 addBookToLibrary("Harry Potter", "JK Rowling", 999, true);
 addBookToLibrary("Rum Diary", "Hunter Thompson", 345, false);
-addBookToLibrary("Paris", "Marc Levi", 212, false);
+addBookToLibrary("Paris", "Marc Levi", 212, true);
 addBookToLibrary("Stoic", "Marcus Aureli", 467, false);
 
 // Function to display books
@@ -47,7 +47,8 @@ function displayBook(arr) {
 
     container.appendChild(eachBook);
 
-    // Remove book
+    ////////////////////////////////////////////////
+    // Remove book button
     let removeBtn = eachBook.querySelector(".removeBtn");
 
     removeBtn.addEventListener("click", (e) => {
@@ -59,6 +60,19 @@ function displayBook(arr) {
       setTimeout(() => {
         container.removeChild(eachBook);
       }, 500);
+    });
+
+    ////////////////////////////////////////////////
+    // Read Status Button
+    let readBtn = eachBook.querySelector(".readBtn");
+    readBtn.addEventListener("click", (e) => {
+      console.log(checkRead.textContent);
+      if (checkRead.textContent.includes("true")) {
+        checkRead.textContent = "Read: false";
+      } else {
+        checkRead.textContent = "Read: true";
+      }
+      // checkRead
     });
   });
 }
@@ -98,9 +112,11 @@ closeButton.addEventListener("click", (e) => {
   dialog.close();
 });
 
-// to-do:
+// done:
 // add Remove book feature
 // style book card to fade
-
 // Read Status button
+
+// to-do:
+// try Read Status using Book prototype function
 // Edit Submit button to reset fields
