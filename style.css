@@ -26,11 +26,6 @@ body {
 
 .bookCard:hover {
   transform: scale(1.05);
-  background-color: #6c6c6c;
-  border: rgb(52, 52, 52) solid 3px;
-
-  color: white;
-  cursor: pointer;
 }
 
 .bookCard p {
@@ -50,4 +45,31 @@ input {
 
 .addBook {
   margin: 30px;
+}
+
+button {
+  width: 200px;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 5px;
+
+  background-color: skyblue;
+  border-radius: 10px;
+
+  /* transition: transform 0.2s ease-in-out; */
+}
+
+button:hover {
+  background-color: #343434;
+  color: white;
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.removeBtn {
+  width: 100px;
 }

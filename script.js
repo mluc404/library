@@ -26,8 +26,10 @@ let bookCard = document.querySelector(".bookCard");
 function displayBook(arr) {
   arr.forEach((book) => {
     let eachBook = document.createElement("div");
-    eachBook.setAttribute("class", "bookCard");
     eachBook.innerHTML = bookCard.innerHTML;
+
+    eachBook.setAttribute("id", book.id);
+    eachBook.setAttribute("class", "bookCard");
 
     let title = eachBook.querySelector(".title");
     title.textContent = `Title: ${book.title}`;
@@ -41,7 +43,23 @@ function displayBook(arr) {
     let checkRead = eachBook.querySelector(".read");
     checkRead.textContent = `Read: ${book.read}`;
 
+    // console.log(eachBook.id);
+
     container.appendChild(eachBook);
+
+    // Remove book
+    let removeBtn = eachBook.querySelector(".removeBtn");
+
+    removeBtn.addEventListener("click", (e) => {
+      // console.log(removeBtn.parentElement);
+
+      // Make the book card fade before removing
+      eachBook.style.opacity = 0.5;
+
+      setTimeout(() => {
+        container.removeChild(eachBook);
+      }, 500);
+    });
   });
 }
 displayBook(myLibrary);
@@ -79,3 +97,10 @@ openButton.addEventListener("click", (e) => {
 closeButton.addEventListener("click", (e) => {
   dialog.close();
 });
+
+// to-do:
+// add Remove book feature
+// style book card to fade
+
+// Read Status button
+// Edit Submit button to reset fields
