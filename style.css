@@ -1,0 +1,54 @@
+/* @font-face {
+    font-family: Roboto;
+    src: url();
+} */
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 10px;
+}
+
+.bookCard {
+  border: rgb(79, 113, 172) solid 3px;
+  padding: 10px;
+  background-color: #d3eeff;
+  border-radius: 5px;
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.bookCard:hover {
+  transform: scale(1.05);
+  background-color: #6c6c6c;
+  border: rgb(52, 52, 52) solid 3px;
+
+  color: white;
+  cursor: pointer;
+}
+
+.bookCard p {
+  font-weight: 50;
+}
+
+form {
+  width: 300px;
+  display: grid;
+}
+
+.addBook {
+  margin: 30px;
+}
+
+button {
+  width: 200px;
+  height: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+}
