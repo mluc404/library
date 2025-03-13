@@ -3,25 +3,38 @@
     src: url();
 } */
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 20px;
+
+  background-color: #abd8ea;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px);
-  gap: 10px;
+  gap: 20px;
+  margin: 50px;
 }
 
 .bookCard {
   border: rgb(79, 113, 172) solid 3px;
-  padding: 10px;
+  padding: 20px;
   background-color: #d3eeff;
   border-radius: 5px;
 
   transition: transform 0.2s ease-in-out;
+
+  display: grid;
+  gap: 5px;
+
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .bookCard:hover {
@@ -35,6 +48,8 @@ body {
 form {
   width: 300px;
   display: grid;
+
+  padding: 20px;
 }
 
 input {
@@ -73,5 +88,9 @@ button:active {
 .removeBtn,
 .readBtn {
   width: 100px;
-  height: auto;
+  height: 30px;
+}
+
+.bookDialog {
+  margin: 20%;
 }

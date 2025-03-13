@@ -15,21 +15,24 @@
         <p class="pages">Pages: 123</p>
         <p class="read">Read: Nah</p>
         <button class="removeBtn">Remove</button>
-        <button class="readBtn">Read Status</button>
+        <button class="readBtn">Read</button>
       </div>
     </div>
 
     <dialog class="bookDialog">
       <form action="">
         <label for="title">Book title </label>
-        <input type="text" class="title" id="title" name="title" />
+        <input required type="text" class="title" id="title" name="title" />
+
         <label for="author">Author </label>
-        <input type="text" class="author" id="author" name="author" />
+        <input required type="text" class="author" id="author" name="author" />
+
         <label for="pages">Pages</label>
-        <input type="text" class="pages" id="pages" name="pages" />
-        <div class="radio">
+        <input required type="text" class="pages" id="pages" name="pages" />
+
+        <div>
           <label for="readYes">I have read the book</label>
-          <input type="checkbox" id="checkRead" />
+          <input required type="checkbox" id="checkRead" checked />
         </div>
         <button type="submit" id="submit">Submit</button>
       </form>

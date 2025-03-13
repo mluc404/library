@@ -8,12 +8,21 @@ function Book(title, author, pages, read) {
   this.about = `${this.title} is written by ${this.author} which has ${this.pages} pages.`;
 }
 
+// Read Status function
+Book.prototype.readStatus = function () {
+  this.read = !this.read;
+  console.log("readStatus() triggered");
+  return this.read;
+};
+
 // Function to create book and add it to Library
 const myLibrary = [];
 function addBookToLibrary(title, author, pages, read) {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
 }
+let book1 = new Book("Harry Potter", "JK Rowling", 999, true);
+// console.log(book1.readStatus());
 addBookToLibrary("Harry Potter", "JK Rowling", 999, true);
 addBookToLibrary("Rum Diary", "Hunter Thompson", 345, false);
 addBookToLibrary("Paris", "Marc Levi", 212, true);
@@ -43,7 +52,11 @@ function displayBook(arr) {
     let checkRead = eachBook.querySelector(".read");
     checkRead.textContent = `Read: ${book.read}`;
 
-    // console.log(eachBook.id);
+    console.log(book.read.value);
+
+    // console.log(book.readStatus());
+
+    // console.log(eachBook.readStatus());
 
     container.appendChild(eachBook);
 
@@ -66,13 +79,25 @@ function displayBook(arr) {
     // Read Status Button
     let readBtn = eachBook.querySelector(".readBtn");
     readBtn.addEventListener("click", (e) => {
-      console.log(checkRead.textContent);
+      console.log(e);
+      // WORKING FINE
+      // console.log(checkRead.textContent);
       if (checkRead.textContent.includes("true")) {
         checkRead.textContent = "Read: false";
+
+        // change button appearance
+        e.target.textContent = "Not Read";
+        e.target.style.backgroundColor = "red";
       } else {
         checkRead.textContent = "Read: true";
+        // change button appearance
+        e.target.textContent = "Read";
+        e.target.style.backgroundColor = "green";
       }
-      // checkRead
+
+      // TRYING NEW METHODS USING PROTOTYPE
+      book.readStatus();
+      checkRead.textContent = `Read: ${book.read}`;
     });
   });
 }
@@ -80,24 +105,51 @@ displayBook(myLibrary);
 
 // Get input from New Book
 let form = document.querySelector("form");
+let inputs = form.querySelectorAll("input");
 let inputTitle = form.querySelector("#title");
 let inputAuthor = form.querySelector("#author");
 let inputPages = form.querySelector("#pages");
 let checkRead = document.querySelector("#checkRead");
 let submitBtn = form.querySelector("#submit");
+
 // Submit and add new book
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
-  addBookToLibrary(
-    inputTitle.value,
-    inputAuthor.value,
-    inputPages.value,
-    checkRead.checked
-  );
-  let newBookArr = myLibrary.splice(-1);
+  let isValid = true;
 
-  displayBook(newBookArr);
+  inputs.forEach((input) => {
+    if (input.value.trim() === "") {
+      console.log("input trimmed", input.value.trim());
+      input.style.border = "red solid 2px";
+      isValid = false;
+      console.log("inside", isValid);
+    } else {
+      input.style.border = "black solid 2px";
+    }
+  });
+
+  if (isValid) {
+    addBookToLibrary(
+      inputTitle.value,
+      inputAuthor.value,
+      inputPages.value,
+      checkRead.checked
+    );
+    let newBookArr = myLibrary.splice(-1);
+    displayBook(newBookArr);
+
+    // // Reset input fields
+    // inputs.forEach((input) => {
+    //   if (input.id === "checkRead") {
+    //     console.log(input);
+    //   } else {
+    //     input.value = "";
+    //   }
+    // });
+
+    form.reset();
+  }
 });
 
 // Toggle button to show modal
@@ -120,3 +172,5 @@ closeButton.addEventListener("click", (e) => {
 // to-do:
 // try Read Status using Book prototype function
 // Edit Submit button to reset fields
+
+// Tweak Read Status style
