@@ -35,6 +35,10 @@ body {
   gap: 5px;
 
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+
+  /* Make card disappear slowly with Remove button in js*/
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
 }
 
 .bookCard:hover {
@@ -71,8 +75,6 @@ button {
 
   background-color: skyblue;
   border-radius: 10px;
-
-  /* transition: transform 0.2s ease-in-out; */
 }
 
 button:hover {

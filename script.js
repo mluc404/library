@@ -22,7 +22,6 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 let book1 = new Book("Harry Potter", "JK Rowling", 999, true);
-// console.log(book1.readStatus());
 addBookToLibrary("Harry Potter", "JK Rowling", 999, true);
 addBookToLibrary("Rum Diary", "Hunter Thompson", 345, false);
 addBookToLibrary("Paris", "Marc Levi", 212, true);
@@ -54,10 +53,6 @@ function displayBook(arr) {
 
     console.log(book.read.value);
 
-    // console.log(book.readStatus());
-
-    // console.log(eachBook.readStatus());
-
     container.appendChild(eachBook);
 
     ////////////////////////////////////////////////
@@ -65,14 +60,12 @@ function displayBook(arr) {
     let removeBtn = eachBook.querySelector(".removeBtn");
 
     removeBtn.addEventListener("click", (e) => {
-      // console.log(removeBtn.parentElement);
-
       // Make the book card fade before removing
-      eachBook.style.opacity = 0.5;
+      eachBook.style.opacity = "0";
 
       setTimeout(() => {
         container.removeChild(eachBook);
-      }, 500);
+      }, 1000);
     });
 
     ////////////////////////////////////////////////
@@ -95,9 +88,9 @@ function displayBook(arr) {
         e.target.style.backgroundColor = "green";
       }
 
-      // TRYING NEW METHODS USING PROTOTYPE
-      book.readStatus();
-      checkRead.textContent = `Read: ${book.read}`;
+      // // TRYING NEW METHODS USING PROTOTYPE
+      // book.readStatus();
+      // checkRead.textContent = `Read: ${book.read}`;
     });
   });
 }
@@ -139,7 +132,7 @@ submitBtn.addEventListener("click", (e) => {
     let newBookArr = myLibrary.splice(-1);
     displayBook(newBookArr);
 
-    // // Reset input fields
+    // // Reset input fields manually
     // inputs.forEach((input) => {
     //   if (input.id === "checkRead") {
     //     console.log(input);
@@ -148,6 +141,7 @@ submitBtn.addEventListener("click", (e) => {
     //   }
     // });
 
+    // Reset form auto
     form.reset();
   }
 });
@@ -169,8 +163,8 @@ closeButton.addEventListener("click", (e) => {
 // style book card to fade
 // Read Status button
 
-// to-do:
+// done:
 // try Read Status using Book prototype function
 // Edit Submit button to reset fields
-
 // Tweak Read Status style
+// Make Remove book fade effect smoothly
